@@ -1,0 +1,6 @@
+demo\PropertyDefinition.class
+framework\IOCException.class
+framework\IOCException$ErrorType.class
+demo\BeanDefinition.class
+framework\IOCService.class
+demo\MyApplicationContext.class
