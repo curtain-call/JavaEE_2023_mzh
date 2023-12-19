@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+<style>
+    .top{
+        background-color: #dddddd;
+        border-radius: 2%;
+    }
+
+    .main{
+        margin-top: 1%;
+        background-color: #dddddd;
+        height:max-content;
+    }
+    
+    .bottom{
+        margin-top: 1%;
+        background-color: #dddddd;
+    }
+   
+   
+</style>
+
+<body>
+  <div id="goods">
+    <el-container class="container">
+        <el-header class="top" height="70px">
+            <h3>商品管理</h3>
+        </el-header>
+        <el-main class="main">
+            <div>
+                <el-button class="btn" @click="showAdd()">增加商品</el-button>
+                <el-button class="btn" @click="deleteGoods()">删除商品</el-button>
+                <el-button class="btn" @click="showModify()">修改商品</el-button>
+                <el-button class="btn" @click="queryById()">查询商品</el-button>
+                <el-input aria-placeholder="请输入商品id号" style="width: 50%;margin-left: 50px;" v-model="id"></el-input>
+            </div>
+
+        </el-main>
+        <el-card class="bottom">
+            <el-table :fit="true" :show-header="true" :data="goods">
+                <el-table-column label="商品ID" prop="id"></el-table-column>
+                <el-table-column label="商品名称" prop="name"></el-table-column>
+                <el-table-column label="商品单价" prop="price"></el-table-column>
+            </el-table>
+        </el-bottom>
+    </el-card>
+
+    <el-dialog title="增加商品" :visible.async="addMode" width="30%" @close="addMode=false">
+        <el-form>
+            <el-form-item label="商品 I D">
+                <el-input v-model="currentGoods.id" style="width: 50%;margin-left: 20%;">
+                </el-input>
+            </el-form-item>
+            <el-form-item label="商品名称">
+                <el-input v-model="currentGoods.name" style="width: 50%;margin-left: 20%;">
+                </el-input>
+            </el-form-item>
+            <el-form-item label="商品单价">
+                <el-input v-model="currentGoods.price" style="width: 50%;margin-left: 20%;">
+                </el-input>
+            </el-form-item>
+            <el-button style="margin-left: 70%;" @click="addGoods()">确定</el-button>
+        </el-form>
+    </el-dialog>
+
+        <el-dialog title="修改商品" :visible.async="modifyMode" width="30%" @close="modifyMode=false">
+            <el-form>
+                <el-form-item label="商品 I D">
+                    <el-input v-model="currentGoods.id" style="width: 50%;margin-left: 20%;">
+                    </el-input>
+                </el-form-item>
+                <el-form-item label="商品名称">
+                    <el-input v-model="currentGoods.name" style="width: 50%;margin-left: 20%;">
+                    </el-input>
+                </el-form-item>
+                <el-form-item label="商品单价">
+                    <el-input v-model="currentGoods.price" style="width: 50%;margin-left: 20%;">
+                    </el-input>
+                </el-form-item>
+                <el-button style="margin-left: 70%;" @click="modifyGoods()">确定</el-button>
+            </el-form>
+        </el-dialog>
+    </el-container>
+  </div>
+</body>
+
+  <!-- 引入vue,element-ui，axios类库-->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+  <!-- 自己的js代码-->
+  <script src="js/goods.js"></script>
+
+
+</html>
